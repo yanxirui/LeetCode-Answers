@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> tag;
+        map<int,int>map;
+        for(int i=nums.size()-1; i>=0; i--){
+            int complement = target - nums[i];
+            if(map.find(complement) != map.end() ){
+                tag.push_back(i);
+                tag.push_back(map.find(complement)->second);
+                return tag;
+            }
+            map.insert(pair<int, int>(nums[i], i));
+        }
+        return tag;
+    }
+};
